@@ -7,6 +7,11 @@ const buttonStyles = cva(["transition-colors"], {
         variant: {
             default: ["bg-secondary", "hover:bg-secondary-hover"],
             ghost: ["hover:bg-gray-100"],
+            dark: [
+                "bg-secondary-dark",
+                "hover:bg-secondary-dark-hover",
+                "text-secondary",
+            ]
         },
         size: {
             default: [" rounded", "p-2"],
@@ -14,9 +19,9 @@ const buttonStyles = cva(["transition-colors"], {
                 "rounded-full",
                 "w-10",
                 "h-10",
-                "flex", 
-                "items-center", 
-                "justiry-center", 
+                "flex",
+                "items-center",
+                "justiry-center",
                 "p-2.5",
             ]
         }
@@ -27,11 +32,11 @@ const buttonStyles = cva(["transition-colors"], {
     }
 })
 
-type ButtonProps = VariantProps<typeof buttonStyles> & 
-ComponentProps<"button">
+type ButtonProps = VariantProps<typeof buttonStyles> &
+    ComponentProps<"button">
 
 export function Button({ variant, size, className, ...props }: ButtonProps) {
-    return <button 
-    {...props} 
-    className={twMerge(buttonStyles({ variant, size, className }))} />
+    return <button
+        {...props}
+        className={twMerge(buttonStyles({ variant, size, className }))} />
 }
