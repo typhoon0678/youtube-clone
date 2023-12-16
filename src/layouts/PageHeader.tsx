@@ -2,6 +2,7 @@ import { ArrowLeft, Bell, Menu, Mic, Search, Upload, User } from "lucide-react"
 import logo from '../assets/logo.png'
 import { Button } from '../components/Button'
 import { useState } from "react"
+import { useSidebarContext } from "../contexts/SidebarContext"
 
 
 export default function PageHeader() {
@@ -62,4 +63,28 @@ export default function PageHeader() {
             </Button>
         </div>
     </div>
+}
+
+type PageHeaderFirstSectionProps = {
+    hidden?: boolean
+}
+
+export function PageHeaderFirstSection({
+    hidden = false,
+}: PageHeaderFirstSectionProps) {
+    const { toggle } = useSidebarContext()
+
+    return (
+        <div
+            className={`gap-4 items-center flex-shrink-0 ${hidden ? "hidden" : "flex"
+                }`}
+        >
+            <Button onClick={toggle} variant="ghost" size="icon">
+                <Menu />
+            </Button>
+            <a href="/">
+                <img src={logo} className="h-6" />
+            </a>
+        </div>
+    )
 }
